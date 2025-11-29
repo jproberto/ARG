@@ -1,0 +1,48 @@
+ARG
+
+um arquivo com formato erro (tipo uma imagem com .txt)
+uma imagem escura com algo escrito
+imagem escondida em arquivo de áudio
+	https://wiki.imesec.ime.usp.br/books/ctf-starter-pack/page/imagem-em-áudio 
+um arquivo com senha
+Algo que tenha um código binário que transforma em um qr code
+Site com notícia de jornal sobre Jeremias
+
+Ao fazer a atualização de ficha/história, dou uma palavra para cada um, dizendo para guardarem pois será importante em algum momento. As palavras são: SENHA, NOITE, CIFRA, CESAR, DOZE, NEGATIVO
+Depois que todos estiverem com tudo certo, mandarei no grupo uma página de jornal com uma matéria falando sobre o que aconteceu no armazém 42, incluindo terem encontrado um papiro egípcio antigo que está sob os cuidados do Prof. Jeremias Khonsu. Além da matéria principal, há um "anúncio" ou algo do tipo com um QR Code que seria de uma promoção ou coisa relacionada. 
+	O QR Code leva para uma página de download de um .zip protegido por senha
+		Para descobrirem a senha, devem decifrar o enigma das palavras. Eles devem entender que a senha é "NOITE", mas precisam usar a cifra de César, deslocando as letras em -12. O resultado é BCWHS
+	Há uma outra informação escondida no jornal. Pode ser algo no texto (por exemplo, a primeira palavra de cada linha), ou em alguma matéria secundária, um outro anúncio... Será algo relacionado a algum bônus que podem ganhar. Por exemplo, o texto "um de vocês ganha mais vida"
+O arquivo protegido por senha é o bit.ly, um formato desconhecido. Os jogadores devem pensar em abrir em um editor de textos e identificar que é um PNG. Ao abrir em um editor de imagens e ajustar o brilho, irão encontrar algumas letras
+	Eles devem unir o nome original do arquivo às letras encontradas para formar um link encurtado que irá levar para a página com a próxima fase
+	Há uma informação escondida nos metadados do arquivo. Os jogadores deverão alterar a extensão do arquivo, clicar com o botão direito, ir nas propriedades e depois nos detalhes. Como esse é um tanto mais complexo, acho que pode ser o Poder Paranormal. 
+O link leva para um vídeo no youtube de 9 segundos, cada segundo com uma imagem com pixels pretos e brancos
+	As imagens formam um QR Code (pode estar fora de ordem?), ao lerem vão para uma página de download
+	Tentar colocar na descrição do vídeo a informação de que alguém vai ganhar 1 nível de Sanidade. Colocar bem lá embaixo, pra terem que clicar no Ver Mais
+		Outra opção, seria colocar em algum código
+O arquivo baixado é um áudio, um ruído com alguns sons ritmados
+	Os toques ritmados são código morse que se traduzem em letras. Essas letras devem ser colocadas num bit.ly/xxxx para levar à próxima fase
+	Ao abrir o áudio em um programa tipo Sonic Visualiser, podem ver a mensagem de que ganham uma Habilidade de Classe
+O link leva para uma página que o link real termina com /teste2. Essa página terá um gif que se alterna entre uma imagem de um pato com chapéu e um pato sem chapéu
+	Os jogadores deverão ir variando o número como teste1, teste3, teste4, etc, até o testeX. Cada uma tem um gif (talvez com imagens diferentes, mas sempre parecidas com algo faltando)
+		O gif tem um padrão de repetição de 8 posições e deve ser traduzido como um código binário
+		Os 0s e 1s devem ser traduzidos em letras, que indicação mais uma vez o link bit.ly/xxxx
+	Caso variem para /teste0, irão encontrar uma mensagem que diz que alguém vai ganhar + 1 nível de PE
+O link vai levar para o blog de conspiração, que vou ter que fazer em html mesmo, falando sobre a vida de Jeremias como irmão de Josias talvez? Pensar melhor nisso
+	Ao inspecionar o html, encontram a mensagem de que alguém vai ganhar um item de categoria I
+
+
+Bônus:
+	Vida (texto do jornal) (Muito fácil)
+	PE (comentário do vídeo) (Fácil)
+	Sanidade (final do arquivo da imagem) (Médio)
+	Item de Categoria I (html) (Médio)
+	Habilidade de Classe (no áudio) (Difícil)
+	Poder Paranormal (/letra0) (Difícil?)
+
+	
+Pontos que a IA precisou de ajuda e pode indicar dificuldades potenciais:
+	-os jogadores precisam compartilhar que cada um recebeu uma palavra
+	-precisam se ligar de que as letras encontradas na imagem são um complemento ao nome do arquivo (bit.ly)
+	-precisam lembrar que a próxima sequência de letras também deve ser usada da mesma forma.	
+	-não encontrou de jeito nenhum o bônus na fase 5, com a URL /letra0
