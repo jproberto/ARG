@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DE DOWNLOAD SEGURO</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #00ff41; /* Verde Matrix */
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h2 { margin-bottom: 30px; letter-spacing: 2px; }
+
+        input {
+            padding: 12px;
+            font-size: 16px;
+            background: #000;
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            outline: none;
+            width: 250px;
+            text-align: center;
+            font-family: inherit;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            background: #00ff41;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        button:hover { background: #00cc33; }
+
+        .status {
+            margin-top: 20px;
+            height: 20px;
+            font-size: 14px;
+        }
+        .erro { color: #ff3333; }
+    </style>
+</head>
+<body>
+
+    <h2>INSERIR A SENHA</h2>
+
+    <input type="password" id="senha" placeholder="SENHA" onkeydown="if(event.key==='Enter'){fazerDownload()}">
+    <br>
+    <button onclick="fazerDownload()">BAIXAR ARQUIVO</button>
+
+    <div id="feedback" class="status"></div>
+
+    <script>
+        const nomeArquivoCriptografado = "U2FsdGVkX1+rN+tARCTGeBNPsWb883qyGijSzDaqZGc="; 
+ 
+        function fazerDownload() {
+            const senhaDigitada = document.getElementById('senha').value;
+            const feedback = document.getElementById('feedback');
+
+            try {
+                const bytes = CryptoJS.AES.decrypt(nomeArquivoCriptografado, senhaDigitada);
+                const nomeArquivoReal = bytes.toString(CryptoJS.enc.Utf8);
+
+                 if (nomeArquivoReal) {
+				 /*
+                    feedback.textContent = "ACESSO AUTORIZADO. INICIANDO TRANSFERÊNCIA...";
+                    feedback.className = "status"; 
+
+                    const link = document.createElement('a');
+                    link.href = nomeArquivoReal;     
+                    link.download = nomeArquivoReal; 
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+					*/
+					
+
+					feedback.textContent = "AUTORIZADO. PREPARANDO PACOTE DE DADOS...";
+                    feedback.className = "status sucesso";
+
+                    // 2. TÉCNICA FORÇADA (FETCH + BLOB)
+                    // Isso obriga o navegador a baixar o arquivo em vez de abrir
+                    fetch(nomeArquivoReal)
+                        .then(response => {
+                            if (!response.ok) throw new Error("Arquivo não encontrado no servidor.");
+                            return response.blob();
+                        })
+                        .then(blob => {
+                            // Cria um link temporário para o 'pacote' de dados
+                            const url = window.URL.createObjectURL(blob);
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.download = nomeArquivoReal; // Força o nome do download
+                            document.body.appendChild(link);
+                            link.click();
+                            
+                            // Limpeza
+                            document.body.removeChild(link);
+                            window.URL.revokeObjectURL(url);
+                            feedback.textContent = "DOWNLOAD INICIADO COM SUCESSO.";
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            feedback.textContent = "ERRO: ARQUIVO CORROMPIDO OU INEXISTENTE.";
+                            feedback.className = "status erro";
+                        });
+                } else {
+                    throw new Error("Senha incorreta");
+                }
+            } catch (e) {
+                feedback.textContent = "ACESSO NEGADO: SENHA INCORRETA.";
+                feedback.className = "status erro";
+                document.getElementById('senha').value = ''; 
+            }
+        }
+    </script>
+</body>
+</html>

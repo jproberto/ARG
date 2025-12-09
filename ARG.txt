@@ -34,11 +34,11 @@ O link vai levar para o blog de conspiração, que vou ter que fazer em html mes
 
 Bônus:
 	Vida (texto do jornal) (Muito fácil)
-	PE (comentário do vídeo) (Fácil)
-	Sanidade (final do arquivo da imagem) (Médio)
-	Item de Categoria I (html) (Médio)
-	Poder Paranormal (no áudio) (Difícil)
-	Habilidade de Classe (/letra0) (Difícil)
+	PE (legenda do vídeo) (Fácil) ok
+	Sanidade (final do arquivo da imagem) (Médio) 
+	Item de Categoria I (html) (Médio) ok
+	Poder Paranormal (no áudio) (Difícil) ok
+	Habilidade de Classe (/letra0) (Difícil) ok
 
 	
 Pontos que a IA precisou de ajuda e pode indicar dificuldades potenciais:
