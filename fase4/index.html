@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 4</title>
+    <style>
+        body {
+            background-color: #0d0d0d; 
+            color: #33ff00; 
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        audio {
+            margin-top: 30px;
+            filter: invert(100%); 
+        }
+		
+		.ponto-final {
+            text-decoration: none;
+            color: #33ff00; 
+            cursor: default; 
+        }
+        
+        .download-secreto {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.02; 
+            font-size: 10px;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+	<p>O essencial é inaudível aos ouvidos<a href="seu_audio.mp3" download class="ponto-final">.</a></p>
+
+    <audio controls>
+        <source src="audio.wav" type="audio/mpeg">
+        Seu navegador não suporta áudio HTML5.
+    </audio>
+
+    <a href="audio.wav" download class="download-secreto">⇩</a>
+
+    <script>
+        console.log("%c ACESSO NÃO AUTORIZADO DETECTADO.", "color: red; font-size: 20px; font-weight: bold;");
+        console.log("Se você está procurando o arquivo fonte, pare de olhar o código e olhe para o rodapé da página.");
+        console.log("Link direto para download: " + window.location.href + "audio.wav");
+    </script>
+
+</body>
+</html>

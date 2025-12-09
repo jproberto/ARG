@@ -37,8 +37,8 @@ Bônus:
 	PE (comentário do vídeo) (Fácil)
 	Sanidade (final do arquivo da imagem) (Médio)
 	Item de Categoria I (html) (Médio)
-	Habilidade de Classe (no áudio) (Difícil)
-	Poder Paranormal (/letra0) (Difícil?)
+	Poder Paranormal (no áudio) (Difícil)
+	Habilidade de Classe (/letra0) (Difícil)
 
 	
 Pontos que a IA precisou de ajuda e pode indicar dificuldades potenciais:
