@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gazeta Carioca - Edição de Terça-feira</title>
+    <style>
+        /* --- ESTILO GERAL DO JORNAL --- */
+        :root {
+            --papel-cor: #f4f1ea;
+            --tinta-cor: #2a2a2a; /* Cor padrão do texto (cinza chumbo) */
+            --borda-cor: #4a4a4a;
+        }
+
+        body {
+            background-color: #333; /* Fundo da mesa/navegador */
+            margin: 0;
+            padding: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--tinta-cor);
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagina-jornal {
+            background-color: var(--papel-cor);
+            width: 100%;
+            max-width: 960px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border: 1px solid #dcd8cf;
+            /* Simulação de textura de papel */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        /* --- CABEÇALHO --- */
+        header {
+            text-align: center;
+            border-bottom: 3px double var(--borda-cor);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+
+        h1.nome-jornal {
+            font-size: 4em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .data-edicao {
+            font-style: italic;
+            color: #555;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        /* --- LAYOUT PRINCIPAL (GRID) --- */
+        .conteudo-principal {
+            display: grid;
+            grid-template-columns: 7fr 3fr; /* 70% Matéria, 30% Classificados */
+            gap: 30px;
+        }
+
+        /* --- MATÉRIA PRINCIPAL --- */
+        article.materia {
+            border-right: 1px solid var(--borda-cor);
+            padding-right: 25px;
+        }
+
+        .titulo-materia {
+            font-size: 2.2em;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .subtitulo-materia {
+            font-size: 1.1em;
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .autor-materia {
+            font-weight: bold;
+            font-size: 0.6em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            border-top: 1px solid var(--borda-cor);
+            border-bottom: 1px solid var(--borda-cor);
+            padding: 5px 0;
+        }
+
+        .texto-materia p {
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 1.2em;
+            font-size: 1.05em;
+        }
+
+        .destaque-nome {
+            font-weight: bold;
+        }
+
+        /* --- BARRA LATERAL (CLASSIFICADOS) --- */
+        aside.classificados {
+            font-size: 0.9em;
+        }
+
+        h3.titulo-secao {
+            text-transform: uppercase;
+            background-color: var(--tinta-cor);
+            color: var(--papel-cor);
+            padding: 5px 10px;
+            margin-top: 0;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif; /* Fonte diferente para destacar a seção */
+        }
+
+        .lista-anuncios {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .anuncio {
+            border-bottom: 1px dotted var(--borda-cor);
+            padding-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        /* --- O SEGREDO DO BÔNUS (ALTERADO) --- */
+        .palavra-chave {
+            font-weight: normal; /* Garante que não está em negrito */
+            /* A cor normal do texto é #2a2a2a (um cinza muito escuro).
+               Aqui colocamos #000000 (preto puro). 
+               A diferença é sutil, parecendo uma falha de tintagem na impressão.
+            */
+            color: #000000; 
+			font-size: 1.05em;
+        }
+
+        /* O anúncio do ARG */
+        .anuncio-arg {
+            border: 2px dashed var(--borda-cor);
+            padding: 15px;
+            text-align: center;
+            margin-top: 30px;
+            background-color: #e9e5dc;
+        }
+
+        .anuncio-arg p {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+            margin-top: 10px;
+        }
+
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            /* SUBSTITUA ESTA URL PELA IMAGEM DO SEU QR CODE */
+            background-image: url('qrcode.png');
+            background-size: cover;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+
+        /* Responsividade para telas pequenas */
+        @media (max-width: 768px) {
+            .conteudo-principal {
+                grid-template-columns: 1fr;
+            }
+            article.materia {
+                border-right: none;
+                border-bottom: 2px solid var(--borda-cor);
+                padding-right: 0;
+                padding-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="pagina-jornal">
+    <header>
+        <h1 class="nome-jornal">Gazeta Carioca</h1>
+        <div class="data-edicao">Rio de Janeiro | Ano XLII | Nº 13.042</div>
+    </header>
+
+    <div class="conteudo-principal">
+        
+        <article class="materia">
+            <h2 class="titulo-materia">Papiro encontrado no Porto pode ser trecho inédito do "Livro dos Mortos"</h2>
+            <p class="subtitulo-materia">Enquanto a polícia investiga o desaparecimento de jovem no Terminal 1, artefatos retirados do Armazém 42 provocam disputa diplomática e mobilizam a elite da arqueologia brasileira.</p>
+            
+            <div class="autor-materia">
+                Por Marcos Vianna | Rio de Janeiro
+            </div>
+
+            <div class="texto-materia">
+                <p>O que começou como uma confusa ocorrência policial na madrugada de ontem, envolvendo uma tentativa de sequestro e invasão de sistemas no Porto do Rio de Janeiro, desdobrou-se em uma das descobertas arqueológicas mais intrigantes da década em solo nacional. Enquanto a Delegacia de Repressão às Ações Criminosas Organizadas (DRACO) foca na busca pela jovem desaparecida do Hospital Souza Aguiar, a comunidade científica volta seus olhos para um pacote discreto, resgatado do chão do Armazém 42.</p>
+                
+                <p>Em meio a caixotes revirados e obras de arte de origem duvidosa, investigadores encontraram um conjunto de papiros com inscrições hieroglíficas. Considerado sem valor imediato para a perícia criminal do sequestro, o material teve sua custódia transferida nesta manhã para o Museu Nacional.</p>
+
+                <p>A operação de salvaguarda foi coordenada pela Dra. Cecília Nascimento, diretora do Núcleo de Estudos da Antiguidade (NEA) do Museu. "A prioridade era tirar o material da umidade do armazém. O estado de conservação é delicado, mas as inscrições estão visíveis", afirmou Nascimento em nota breve.</p>
+
+                <p><strong>A Análise do Especialista</strong></p>
+
+                <p>Para desvendar o conteúdo dos textos, o Museu Nacional acionou a maior autoridade no assunto no país: o <span class="destaque-nome">Dr. Jeremias Khonsu</span>. Ph.D. em Egiptologia e pesquisador titular do Laboratório de História Antiga (LHIA) da UFRJ, Khonsu é reconhecido mundialmente por seus trabalhos sobre dinastias do Novo Império.</p>
+
+                <p>Fontes ligadas ao LHIA confirmam que o professor já iniciou a análise preliminar dos fragmentos. Embora a datação por radiocarbono ainda não tenha sido concluída, a hipótese que circula nos corredores da universidade é audaciosa: os papiros podem conter trechos originais e desconhecidos da <em>Pert em Hru</em> — a "Fórmula de Sair à Luz do Dia", popularmente conhecida no ocidente como o <strong>Livro dos Mortos</strong>.</p>
+
+                <p>Khonsu, conhecido por seu rigor acadêmico, evitou confirmar a teoria, limitando-se a dizer que "a caligrafia e a sintaxe sugerem um escriba de alta patente, possivelmente da XIX Dinastia, mas ainda é cedo para conclusões".</p>
+
+                <p><strong>Tensão Diplomática</strong></p>
+
+                <p>A descoberta acidental no porto carioca não passou despercebida no Cairo. O Ministério de Antiguidades do Egito protocolou, ainda na manhã de hoje, um pedido formal junto ao Itamaraty exigindo o congelamento de qualquer intervenção nos artefatos. O documento solicita a repatriação imediata não apenas dos papiros, mas também das ossadas humanas encontradas no mesmo armazém, alegando que se tratam de bens culturais espoliados.</p>
+            </div>
+        </article>
+
+        <aside class="classificados">
+            <h3 class="titulo-secao">Classificados & Oportunidades</h3>
+            
+            <div class="lista-anuncios">
+                <div class="anuncio">
+                    <span class="palavra-chave">Um</span> galpão industrial na Zona Portuária. 500m², pé direito alto. Tratar com Sr. Mendes.
+                </div>
+                <div class="anuncio">
+                    <span class="palavra-chave">De</span> oportunidade: vendo lote de livros de história antiga. Acervo de professor aposentado.
+                </div>
+                <div class="anuncio">
+                    <span class="palavra-chave">Vocês</span> precisam de segurança privada? Empresa especializada em transporte de valores e cargas sensíveis. Sigilo absoluto.
+                </div>
+                <div class="anuncio">
+                    <span class="palavra-chave">Ganha</span> espaço na sua casa: compramos móveis antigos e objetos de decoração vintage. Pagamento à vista.
+                </div>
+                <div class="anuncio">
+                    <span class="palavra-chave">Um</span> vidraceiro urgente para reparo em vitrine de loja no Centro.
+                </div>
+                <div class="anuncio">
+                    <span class="palavra-chave">Nível</span> a laser marca alemã, pouquíssimo uso. Ideal para engenheiros e arquitetos exigentes.
+                </div>
+                <div class="anuncio">
+                    <span class="palavra-chave">De</span> aluguel: quarto e sala para estudante próximo à UFRJ. Ambiente familiar.
+                </div>
+                <div class="anuncio">
+                    <span class="palavra-chave">Vida</span> longa aos seus sapatos. Sapataria do Gomes, tradição desde 1950 no Largo da Carioca.
+                </div>
+
+                <div class="anuncio-arg">
+                    <div class="qr-placeholder"></div>
+                    <p>SABER MAIS</p>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+</body>
+</html>
